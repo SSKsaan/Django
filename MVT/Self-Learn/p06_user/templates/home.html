@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="d-grid gap-4 col-4 mx-auto my-5">
+            <a class="btn btn-outline-primary" href="{% url 'cookie' %}" role="button">
+                <h1><b>GO TO COOKIE APP</b></h1>
+            </a>
+            <a class="btn btn-outline-success" href="{% url 'session' %}" role="button">
+                <h1>GO TO SESSION APP</h1>
+            </a>
+        </div>
+    {% else %}
+        <h1 class="text-center text-danger m-5 p-5">Signin to Continue</h1>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="d-grid gap-5 col-4 mx-auto my-5">
+        <a class="btn btn-outline-primary" href="{% url 'set_cookie' %}" role="button">
+            <h1>SET COOKIES</h1>
+        </a>
+        <a class="btn btn-outline-success" href="{% url 'get_cookie' %}" role="button">
+            <h1>GET COOKIES</h1>
+        </a>
+        <a class="btn btn-outline-danger" href="{% url 'del_cookie' %}" role="button">
+            <h1>DEL COOKIES</h1>
+        </a>
+    </div>
+    {% block cooking %}
+    {% endblock %}
+{% endblock %}

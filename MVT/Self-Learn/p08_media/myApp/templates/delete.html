@@ -1,0 +1,30 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+    
+<div class="mx-auto mt-5 p-5 border border-secondary-subtle border-2 rounded" style="width: fit-content;">
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <p class="fs-5">You Have Selected: <u><b>{{object.name}}</b></u></p>
+        <!-- DeleteView provides a default 'object' context as the object to be deleted -->
+        {% if object.pic %}
+            <img src="{{object.pic.url}}"></img>
+        {% elif object.img %}
+            <img src="{{object.img.url}}"></img>
+        {% else %}
+            <img src="{% static 'default.jpg' %}"></img>
+        {% endif %}
+        <!-- img src format: obj-Name.field-Name.url -->
+    </div>
+    <hr class="bg-dark my-4">
+    <div class="text-center">
+    <h1>Sure Wanna Delete This?</h1>
+        <button class="btn btn-outline-success m-1"><a href="/" class="nav-link">NO</a></button>
+        <form method="post" class="d-inline-block"> 
+            {% csrf_token %} <!-- DeleteView needs a submit button in post form -->
+            <input class="btn btn-danger m-1" type="submit" value="YES">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

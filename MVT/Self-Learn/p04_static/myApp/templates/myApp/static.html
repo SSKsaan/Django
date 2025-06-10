@@ -1,0 +1,17 @@
+{% extends "./base.html" %} <!-- must be on top of everything -->
+{% load static %} <!-- must be on top to use { % static ___ % } -->
+
+{% block header %}
+    <title>Static Assets</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- not recommended using static file like this, but it works -->
+{% endblock %}
+
+{% block content %}
+    <h1 class="py-5">This Page has Static CSS styles</h1>
+    <img src="{% static 'img/panda.jpeg' %}" alt="static image" width="75%">
+    <!-- standard way to use static files from the 'static' folder -->
+    <!-- need to have load static at the top of this file to work -->
+    <h2>This is a static image</h2>
+    <a class="btn btn-danger px-4 py-2" href="{% url 'home' %}">GO  BACK</a>
+{% endblock %}

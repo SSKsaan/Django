@@ -1,0 +1,11 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding-block: 5vh;
+}
+
+a:hover {transform: scale(1.1);}

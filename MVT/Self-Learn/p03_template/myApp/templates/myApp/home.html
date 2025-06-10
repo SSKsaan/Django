@@ -1,0 +1,22 @@
+{% extends './base.html' %} <!-- must be at the beginning -->
+
+{% block content %}
+<!-- anything inside the blocks in base html will be replaced -->
+
+{{block.super}}  <!-- adds content from base html block as well -->
+
+{% include "myApp/included.html" %} <!-- includes content from other html file -->
+
+<h2><a href="/app/tempLang/">
+    ==> Check Template Language Implementations <==
+</a></h2>
+
+<h2><a href="/app/URLtag/">
+    ==>  == > Check URL tags Implementations < ==  <==
+</a></h2>
+
+<button style="background-color: brown; min-width: 6vw; margin-left: 47vw; padding: 5px;">
+    <a href="/" style="color: white; font-size: 20px;">EXIT APP</a>
+</button>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends './myApp/base.html' %}
+{% load static %}
+
+{% block header %}
+    <title>Static & Media Assets</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- to add static files in project, settings need to be added -->
+    <!-- but to add static files in app, no extra settings are needed -->
+{% endblock %}
+
+{% block content %}
+    <a class="btn btn-lg btn-dark px-4 py-2 mb-5" href="{% url 'static' %}">GO  TO  APP</a>
+    <img src="/static/img/mew.png" alt="statc image" width="100%">
+    <h3>Open static images in a new tab to see their url</h3>
+{% endblock %}

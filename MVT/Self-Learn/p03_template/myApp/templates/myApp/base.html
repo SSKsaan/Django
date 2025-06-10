@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Templating</title>
+    <style>
+        * { color: white; }
+        h1, h2, h3, h5 { text-align: center; }
+        h4 {text-decoration: underline;}
+        a { text-decoration: none; color: aqua;}
+    </style>
+</head>
+
+<body style="background-color: black;">
+
+    {% block content %}
+    <h1>WELCOME</h1>
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+<h1>Basic Templates Language</h1>
+
+    <h4>Accessing variables from backend:</h4>
+        <p>Name: <b>{{Name}}</b></p>
+        <!-- variables from backend must be within double curly braces -->
+
+    <h4>Using if-elif-else conditional ladder:</h4>
+        {% if Age >= 20 %} <!-- must be inside %% in {} -->
+            <p>You are old enough</p>
+        {% elif Age > 9 and Age <= 19 %}
+            <!-- variable or value inside conditional don't need double curly braces -->
+            <p>You are almost old enough</p>
+        {% else %} <p>You are not old enough</p>
+        {% endif %} <!-- must have, to indicate the end of condition -->
+        <p>Age: <b>{{Age}}</b></p>
+
+    <h4>Using for loop:</h4>
+        {% for i in Dict %}
+            <p>{{i.id}}: {{i.Title}}</p>
+        {% endfor %} <!-- must have, to indicate the end of loop -->
+
+<h1>Template Filtering</h1>
+
+    <h4>Join</h4>
+        <p>{{Dict | join:" ; "}}</p> <!-- must be exact format, even spaces -->
+
+    <h4>Date & Time:</h4>
+        <p>
+            {{Datetime | date:"D d M Y"}}, 
+            {{Datetime | time:"h:i A"}}
+        </p>
+
+    <h4>Default</h4>
+        <p>
+            {{"String" | default:"Blah Blah"}}
+            <!-- default value will display if initial string is empty -->
+            {{"" | default:"Was Empty"}}
+        </p> 
+
+    <h4>Add</h4>
+        <p>
+            {{3 | add:"2"}}
+            <!-- initial value & adding value must be of same type -->
+            {{"is" | add:" added "}}
+        </p> 
+
+    <h4>Cut</h4>
+        <p>
+            {{"Ddjango" | cut:"d"}}
+            <!-- all occurances will be cut, but case matters -->
+            {{"C U T" | cut:" "}}
+        </p>
+
+    <h4>Upper & Lower</h4>
+        <p>
+            {{"THIS WAS UPPERCASE" | lower}} & 
+            {{"this was lowercase" | upper}}
+        </p>
+
+    <h4>Capfirst & Title</h4>
+        <p>
+            {{"only FIRST letter capitalized" | capfirst}} &
+            {{"all words start with capital letter" | title}}
+        </p>
+
+    <h4>Timesince</h4>
+        <p>
+            {{ Birthday | timesince }} <!-- time between given date and now -->
+            {{ Birthday | timesince:Datetime }} <!-- time between given dates -->
+        </p>
+
+    <h4>Length</h4>
+        <p>
+            Length of " " is {{" " | length}}, 
+            Length of "" is {{"" | length}} 
+        </p>
+
+    <h4>Truncatechars</h4>
+        <p>
+            {{"This line is ok" | truncatechars:15}}, 
+            <!-- cut all chars exceeding given char count & replace with just ... -->
+            {{"This line is too long" | truncatechars:20}}
+        </p>
+
+    <h4>Truncatewords</h4>
+        <p>
+            {{"Just enough words" | truncatewords:3}}
+            ({{"Just enough words" | wordcount}}). <!-- number of words -->
+            <!-- cut all words exceeding given word count -->
+            {{"Or is it too many words?" | truncatewords:5}}
+        </p>
+
+<button style="background-color: brown; min-width: 8vw; margin-left: 90vw; padding: 5px;">
+    <a href="/app/" style="color: white; font-size: 20px;">GO  BACK</a>
+</button>
+
+{% endblock %}

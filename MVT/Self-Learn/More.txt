@@ -1,0 +1,2 @@
+Shifted from implementation projects to flashcards (through Notion) for quicker recallability.
+Link: https://time-cone-3a5.notion.site/Django-1aeb6f4246cb80a58b21c4c293aff5e6

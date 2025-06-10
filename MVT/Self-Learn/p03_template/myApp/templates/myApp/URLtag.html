@@ -1,0 +1,54 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+<h1>
+    <a href="{% url 'URLtag' %}"> <!-- must have the same 'name' in urls path -->
+        ===> Option 1: Load deafult URL <===
+    </a>
+</h1>
+<h5>Look at the URL path</h5>
+
+<h1>
+    <a href="{% url 'urltag' id=99 %}">
+        ===> Option 2: Load URL with id <===
+    </a>
+</h1>
+<h5>For example id 99 is used, Try changing the number in URL</h5>
+
+<h1>
+    <a href="/app/URLtag/?age=21&name=San/">
+        = > Option 3: Load URL with inputs < =
+    </a>
+</h1>
+<h5>
+    inputs must start with ? and separated with & <br>
+    no space or quotes or end slash needed <br>
+    format .../?key=value&key=value&... <br>
+    Try yourself by editing the URL <br>
+</h5>
+
+
+<h3 style="text-decoration: overline;">
+    id = {{id}}
+    {% if not id %}
+        NOT FOUND, Try Option 2
+    {% endif %}
+</h3>
+
+<h3 style="text-decoration: overline;">
+    {% if not input %} <p>NO INPUT YET, Try Option 3</p> {% endif %}
+    <p>{{input}}</p>
+    <!-- get specific part with dot or the whole <input> as QueryDict -->
+    {% if input.name %}
+        <p>individual input ['name']: {{input.name}}</p>
+    {% elif input %}
+        <p>[add an input 'name' to see its individual output]</p>
+    {% endif %}
+</h3>
+
+<button style="background-color: brown; min-width: 8vw; margin-left: 46vw; padding: 5px;">
+    <a href="/app/" style="color: white; font-size: 20px;">GO  BACK</a>
+</button>
+
+{% endblock %}

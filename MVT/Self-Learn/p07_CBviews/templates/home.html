@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if data %}
+<table class="table table-dark table-bordered table-hover text-center align-middle">
+    <thead class="table-group-divider">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Content</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        {% for obj in data %} 
+            <tr>
+                <td>{{obj.id}}</td>
+                <td>{{obj.name}}</td>
+                <td>{{obj.content | truncatechars:25}}</td>
+                <td>
+                    <a href="{% url 'detailsView' obj.id %}" 
+                        class="btn btn-sm btn-outline-info m-1"> View </a>
+                    <a href="{% url 'updateView' obj.id %}" 
+                        class="btn btn-sm btn-outline-success m-1"> Edit </a>
+                    <a href="{% url 'deleteView' obj.id %}" 
+                        class="btn btn-sm btn-outline-danger m-1"> Delete </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h1 class="text-center m-5 p-5"> Welcome Home </h1>
+{% endif %}
+
+{% if user.is_authenticated %}
+<div class="text-center">
+    <a class="btn btn-primary btn-lg p-2 mb-5 mt-2 mx-2" 
+    href="{% url 'createView' %}"> ADD NEW ENTRY </a>
+</div>
+{% endif %}
+{% endblock %}

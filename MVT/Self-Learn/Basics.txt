@@ -1,0 +1,55 @@
+# Virtual Environment:
+1. Run the command to create new environment:
+	python -m venv envName
+2. Run the command to use said environment:
+	.\envName\Scripts\activate.bat
+3. Run the command to deactivate after usage:
+	deactivate
+
+
+# Creating Django Project: (Terminal Commands) 
+1. django-admin startproject project_name
+2. cd project_name
+3. code . (opening project folder in vscode)
+
+
+# Creating Django App in a Django Project:
+1. Terminal Command: django-admin startapp app_name
+2. The go to inner project folder > setting.py
+3. Write 'app_name', Under INSTALLED APPS = [...
+
+
+# Creating & Connecting Views & URLs:
+1. create views.py file in inner project folder
+2. Create urls.py file in app folder
+3. In the project url.py, add the following codes:
+	from django.urls import path, include
+	urlpatterns = [
+		path('appName/', include('appName.urls'))
+	]
+
+
+# Templates from Project:
+1. Create a folder in the outer project folder, generally 'templates'
+2. Go to project settings.py and add 'templates', inside 'DIRS': []
+3. Create html files in templates folder
+4. In views.py add the code:
+	from django.shortcuts import render
+5. Now return render(request, "_.html") from functions to load html pages
+
+
+# Templates from App:
+1. Create 'templates'(name must be exact) folder in app folder
+	For apps, no need to add anything in settings.py if folder name is 'templates'
+2. Create a folder with the app name in templates (this is just recommended)
+3. Create html files in that folder
+4. In views.py add the code:
+	from django.shortcuts import render
+5. Now return render(request, "appName/_.html") from functions to load html pages
+ 
+ 
+# Frequently Used Terminal Commands:
+1.[for local site deployment] 					py manage.py runserver
+2.[after making changes to model/database] 		py manage.py makemigrations
+3.[after makemigrations command, to finalize] 	py manage.py migrate
+4.[to make admin account] 						py manage.py createsuperuser
